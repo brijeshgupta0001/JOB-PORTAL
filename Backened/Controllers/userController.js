@@ -121,13 +121,12 @@ export const updateProfile = async (req, res) => {
 
     //cloudinary aayega idhhar
     const fileUri = getDataUri(file);
-    //console.log(fileUri.content);
+
     const cloudResponce = await cloudinary.uploader
       .upload(
         fileUri.content
       )
       .catch((error) => {
-        console.log("hello");
         console.log(error);
       });
 
@@ -136,7 +135,6 @@ export const updateProfile = async (req, res) => {
     if (skills) {
       skillsArray = skills.split(",");
     }
-    console.log(req.id);
     const userId = req.id;
     let user = await User.findById(userId);
     if (!user) {

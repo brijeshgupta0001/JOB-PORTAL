@@ -9,13 +9,13 @@ import useGetAllJobs from '@/hooks/useGetAllJobs';
 
 const Browse = () => {
     useGetAllJobs();
-    const {allJobs} = useSelector(store=>store.job);
+    const { allJobs } = useSelector(store => store.job);
     const dispatch = useDispatch();
-    useEffect(()=>{
-        return ()=>{
+    useEffect(() => {
+        return () => {
             dispatch(setSearchedQuery(""));
         }
-    },[])
+    }, [])
     return (
         <div>
             <Navbar />
@@ -25,7 +25,7 @@ const Browse = () => {
                     {
                         allJobs.map((job) => {
                             return (
-                                <Job key={job._id} job={job}/>
+                                <Job key={job._id} job={job} />
                             )
                         })
                     }
